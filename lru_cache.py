@@ -17,7 +17,7 @@ class LRUCache(object):
             maximum cache size is reached
     """
     def __init__(self, size, name, expire_size=200):
-        self.name = name
+        self._name = name
         self.size = size
         self.expire_size = expire_size
         self._keys = 'lru:'+name+'_keys'
@@ -64,6 +64,10 @@ class LRUCache(object):
             keys=self._keys,
             store=self._store
         ))
+        
+    @property
+    def name(self):
+        return self._name
 
     def __setitem__(self, key, value):
         self.__set_item(args=[key, pickle.dumps(value)])
