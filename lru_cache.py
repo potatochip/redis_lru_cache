@@ -22,9 +22,6 @@ class LRUCache(object):
         self.expire_size = expire_size
         self._keys = 'lru:'+name+'_keys'
         self._store = 'lru:'+name+'_store'
-        self.__set_item = None
-        self.__get_item = None
-        self.__batch_get = None
         self._register_lua_scripts()
 
     def _register_lua_scripts(self):
